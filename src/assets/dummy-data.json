@@ -1,0 +1,25 @@
+[
+    {
+      "id": 1,
+      "title": "Finish report",
+      "status": "TODO",
+      "dueDate": "2023-08-31T14:00:00",
+      "task_priority": "high"
+    },
+    {
+      "id": 2,
+      "title": "Review presentation",
+      "status": "INPENDING",
+      "dueDate": "2023-08-20T16:30:00",
+      "task_priority": "medium"
+    },
+    {
+      "id": 3,
+      "title": "Submit expenses",
+      "status": "DONE",
+      "dueDate": "2023-08-15T12:00:00",
+      "task_priority": "low"
+
+    }
+]
+  

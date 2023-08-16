@@ -1,0 +1,117 @@
+<div class="inputDiv">
+     
+    <form>
+    <label for="taskInput" >Task:</label>
+    <input [(ngModel)]="newTask" name="task" placeholder="Enter a new task..." class="inputTask" id="taskInput" /><br>
+     
+    <label for="dueDateInput"> Due Date:</label>    
+    <input [(ngModel)]="newTaskDueDate" type="datetime-local" name="date" class="inputDueDate" id="dueDateInput" 
+       min="{{ getCurrentDateTime() }}" />
+
+
+    <div class="radio">
+        <p class="priority">Priority:-</p>
+
+        <input [(ngModel)]="priority" type="radio" id="high" name="priority" value="high"  />
+        <label for="high">high</label>
+    
+        <input [(ngModel)]="priority" type="radio" id="medium" name="priority" value="medium" />
+        <label for="medium">medium</label>
+
+        <input [(ngModel)]="priority" type="radio" id="low" name="priority" value="low" />
+        <label for="low">low</label>
+    </div>
+
+    <button (click)="addTask()" class="btn">Add</button>
+    </form>
+</div>
+  
+
+<div class="main">
+    <div class="container">
+        <h2>TODOs</h2>
+        <div >
+            <table>
+            <thead>
+                <tr>
+                  <th scope="col">Task</th>
+                  <th scope="col">Due Date</th>
+        
+                  <th scope="col">Priority</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Due Time</th>
+                </tr>
+              </thead>
+            <tbody>
+                <tr *ngFor="let task of tasks;"  class="listDiv">
+                    <td [ngClass]="{ 'todo': task.status === 'TODO' }" class="text">{{ task.title }}</td>
+                    <td class="due-date">{{ task.dueDate | dateFormat: 'MMM DD, YYYY h:mm A' }}</td>
+                    <td class="task-priority">{{ task.task_priority }}</td>
+                    <td><button (click)="moveToPending(task)" class="btn">Begin</button></td>
+                    <td>{{ getTaskDueTime(task) }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>In Progress</h2>
+        <div >
+            <table>
+                <thead>
+                    <tr>
+                      <th scope="col">Task</th>
+                      <th scope="col">Priority</th>
+                      <th scope="col">Mark status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let task of inPending;"  class="listDiv">
+                        <td [ngClass]="{ 'pending': task.status === 'INPENDING' }" class="text">{{ task.title }}</td>
+                        <td class="task-priority">{{ task.task_priority }}</td>
+                        <td><button (click)="moveToDone(task)" class="btn">Done</button></td>
+                    </tr>
+    
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Completed</h2>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                      <th scope="col">Task</th>
+                      <th scope="col">Completed On</th>
+                      <th scope="col">Remove</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let task of taskDone; let i = index"  class="listDiv">
+                        <td [ngClass]="{ 'done': task.status === 'DONE' }" class="text">{{ task.title }}</td>
+                        <td class="completedOn">{{ completedOn() }}</td>
+                        <td><button (click)="deleteTask(i)" class="btn">Delete</button></td>
+                    </tr>
+    
+                </tbody>
+            </table>
+            
+            
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

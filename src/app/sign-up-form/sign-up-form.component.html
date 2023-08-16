@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>SignUp Form</h1>
+    <form (submit)="submit()">
+        <div class="form-group">
+            <label for="email">Email</label><br>
+            <input type="email" name="email" class="form-control" ngModel required #email="ngModel">
+        </div>
+
+        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+            <p *ngIf="email.errors?.['required']">Email Required!</p>
+        </div>
+
+        <pre></pre>
+
+        <div class="form-group">
+            <label for="password">Password</label><br>
+            <input type="password" name="password" class="form-control" ngModel required minlength="8" maxlength="20" #password="ngModel">
+        </div>
+
+        <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+            <p *ngIf="password.errors?.['required']">Password Required!</p>
+            <p *ngIf="password.errors?.['minlength']">Password should be at least 8 characters long!</p>
+        </div>
+
+        <pre></pre>
+
+        <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label><br>
+            <input type="password" name="confirmPassword" class="form-control" ngModel required minlength="8" maxlength="20" #confirmPassword="ngModel">
+        </div>
+
+        <div class="alert alert-danger" *ngIf="confirmPassword.touched && confirmPassword.invalid">
+            <p *ngIf="confirmPassword.errors?.['required']">Confirm Password Required!</p>
+            <p *ngIf="confirmPassword.errors?.['minlength']">Password should be at least 8 characters long!</p>
+        </div>
+
+        <pre></pre>
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
