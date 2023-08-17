@@ -28,22 +28,23 @@
   background-color: #a477f7;
 }
 .inputDiv{
-  /* display: flex;
-  align-items: center;
-  flex-direction: column; */
   max-width: 400px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 10px;
   border: 1px solid #ccc;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  text-align: left;
+  padding: px;
+   /* text-align: center; 
+  align-items: center;
+  justify-content: center; */
 }
 .inputTask,.inputDueDate{
   text-align: left;
   font-weight: bold;
-  width: 95%;
+  width: 93%;
   /* margin-left: 10%; */
+  margin: 5px ;
   font-family: sans-serif;
   padding: 10px;
   border: 1px solid #ccc;

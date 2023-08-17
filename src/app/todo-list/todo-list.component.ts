@@ -41,11 +41,11 @@ export class TodoListComponent implements OnInit {
   
   
   addTask() {
-    if (this.newTask.trim() === '') return;
     if (!this.newTask) {
       alert('Please enter a task.');
       return;
     }
+    if (this.newTask.trim() === '') return;
     if (!this.newTaskDueDate) {
       alert('Please select a due date.');
       return;
