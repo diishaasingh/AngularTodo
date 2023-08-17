@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { DateFormatPipe } from './date-format.pipe';
+import { CountdownPipe } from './date-format.pipe';
 import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
 
 
@@ -13,7 +14,8 @@ import { SignUpFormComponent } from './sign-up-form/sign-up-form.component';
     AppComponent,
     TodoListComponent,
     DateFormatPipe,
-    SignUpFormComponent
+    SignUpFormComponent,
+    CountdownPipe
   ],
   imports: [
     BrowserModule,

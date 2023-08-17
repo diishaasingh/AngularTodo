@@ -1,32 +1,32 @@
 <div class="inputDiv">
-     
-    <form>
-    <label for="taskInput" >Task:</label>
-    <input [(ngModel)]="newTask" name="task" placeholder="Enter a new task..." class="inputTask" id="taskInput" /><br>
-     
-    <label for="dueDateInput"> Due Date:</label>    
-    <input [(ngModel)]="newTaskDueDate" type="datetime-local" name="date" class="inputDueDate" id="dueDateInput" 
-       min="{{ getCurrentDateTime() }}" />
-
-
-    <div class="radio">
-        <p class="priority">Priority:-</p>
-
-        <input [(ngModel)]="priority" type="radio" id="high" name="priority" value="high"  />
-        <label for="high">high</label>
-    
-        <input [(ngModel)]="priority" type="radio" id="medium" name="priority" value="medium" />
-        <label for="medium">medium</label>
-
-        <input [(ngModel)]="priority" type="radio" id="low" name="priority" value="low" />
-        <label for="low">low</label>
-    </div>
-
-    <button (click)="addTask()" class="btn">Add</button>
-    </form>
-</div>
+    <form (ngSubmit)="addTask()">
+      <!-- <label for="taskInput">Task:</label> -->
+      <input [(ngModel)]="newTask" name="task" placeholder="Enter a new task..." class="inputTask" id="taskInput"
+             required maxlength="30" /><br>
+       
+      <!-- <label for="dueDateInput"> Due Date:</label>     -->
+      <input [(ngModel)]="newTaskDueDate" type="datetime-local" name="date" class="inputDueDate" placeholder="due-date" id="dueDateInput" 
+             min="{{ getCurrentDateTime() }}" required />
   
-
+      <div class="radio">
+          <p class="priority">Priority:-</p>
+  
+          <input [(ngModel)]="priority" type="radio" id="high" name="priority" value="high" />
+          <label for="high">high</label>
+      
+          <input [(ngModel)]="priority" type="radio" id="medium" name="priority" value="medium"/>
+          <label for="medium">medium</label>
+  
+          <input [(ngModel)]="priority" type="radio" id="low" name="priority" value="low" />
+          <label for="low">low</label>
+      </div>
+  
+      <button type="submit" class="btn">Add</button>
+    </form>
+  </div>
+  
+  
+  
 <div class="main">
     <div class="container">
         <h2>TODOs</h2>
@@ -48,7 +48,7 @@
                     <td class="due-date">{{ task.dueDate | dateFormat: 'MMM DD, YYYY h:mm A' }}</td>
                     <td class="task-priority">{{ task.task_priority }}</td>
                     <td><button (click)="moveToPending(task)" class="btn">Begin</button></td>
-                    <td>{{ getTaskDueTime(task) }}</td>
+                    <td>{{ task.dueDate | countdown }}</td>
                 </tr>
 
             </tbody>

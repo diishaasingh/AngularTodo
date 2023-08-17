@@ -42,10 +42,10 @@
 .inputTask,.inputDueDate{
   text-align: left;
   font-weight: bold;
-  margin-left: 10%;
+  width: 95%;
+  /* margin-left: 10%; */
   font-family: sans-serif;
-  width: 34%;
-  padding: 8px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
