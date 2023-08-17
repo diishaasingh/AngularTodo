@@ -35,11 +35,10 @@
             <thead>
                 <tr>
                   <th scope="col">Task</th>
-                  <th scope="col">Due Date</th>
-        
+                  <th scope="col">Due Date</th>   
                   <th scope="col">Priority</th>
-                  <th scope="col">Status</th>
                   <th scope="col">Due Time</th>
+                  <th scope="col">Status</th>
                 </tr>
               </thead>
             <tbody>
@@ -47,8 +46,9 @@
                     <td [ngClass]="{ 'todo': task.status === 'TODO' }" class="text">{{ task.title }}</td>
                     <td class="due-date">{{ task.dueDate | dateFormat: 'MMM DD, YYYY h:mm A' }}</td>
                     <td class="task-priority">{{ task.task_priority }}</td>
-                    <td><button (click)="moveToPending(task)" class="btn">Begin</button></td>
                     <td>{{ task.dueDate | countdown }}</td>
+                    <td><button (click)="moveToPending(task)" class="btn">Begin</button></td>
+
                 </tr>
 
             </tbody>
@@ -64,6 +64,7 @@
                     <tr>
                       <th scope="col">Task</th>
                       <th scope="col">Priority</th>
+                      <th scope="col">Due Time</th>
                       <th scope="col">Mark status</th>
                     </tr>
                   </thead>
@@ -71,6 +72,7 @@
                     <tr *ngFor="let task of inPending;"  class="listDiv">
                         <td [ngClass]="{ 'pending': task.status === 'INPENDING' }" class="text">{{ task.title }}</td>
                         <td class="task-priority">{{ task.task_priority }}</td>
+                        <td>{{ task.dueDate | countdown }}</td>
                         <td><button (click)="moveToDone(task)" class="btn">Done</button></td>
                     </tr>
     
