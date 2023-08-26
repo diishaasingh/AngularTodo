@@ -1,13 +1,14 @@
 <div class="container">
     <h1>SignUp Form</h1>
-    <form (submit)="submit()">
-        <div class="form-group">
-            <label for="email">Email</label><br>
-            <input type="email" name="email" class="form-control" ngModel required #email="ngModel">
+    <form (submit)="submit()" #taskForm="ngForm">
+        <div class="form-group"> 
+            <label for="username">Username</label><br>
+            <input type="text" name="username" class="form-control" ngModel required #username="ngModel" minlength="1" maxlength="20">
         </div>
 
-        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
-            <p *ngIf="email.errors?.['required']">Email Required!</p>
+        <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+            <p *ngIf="username.errors?.['required']">Username Required!</p>
+            <p *ngIf="username.errors?.['pattern']">Invalid Username!</p>
         </div>
 
         <pre></pre>
@@ -36,6 +37,6 @@
 
         <pre></pre>
 
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!taskForm.form.valid || password.value !== confirmPassword.value || isUsernameExist()">Submit</button>
     </form>
 </div>
